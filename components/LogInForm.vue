@@ -60,7 +60,6 @@ export default {
     ]),
     onSubmit (evt) {
       evt.preventDefault()
-      // this.login(this.form)
       try {
         this.$auth.loginWith('local', {
           data: {

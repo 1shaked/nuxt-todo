@@ -1,9 +1,49 @@
 <template>
   <div>
-    <nuxt />
+    <div>
+      <b-navbar toggleable="sm" type="light" variant="light">
+        <b-navbar-toggle target="nav-text-collapse" />
+
+        <b-navbar-brand>BootstrapVue</b-navbar-brand>
+
+        <b-collapse id="nav-text-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item href="/">
+              Home page
+            </b-nav-item>
+          </b-navbar-nav>
+          <!-- when the user is logged in -->
+          <b-navbar-nav v-if="this.$auth.loggedIn" class="ml-auto">
+            <b-nav-item @click="$auth.logout('local')">
+              Log OUT
+            </b-nav-item>
+          </b-navbar-nav>
+          <!-- when the user is not loged in -->
+          <b-navbar-nav v-if="!this.$auth.loggedIn" class="ml-auto">
+            <b-nav-item href="/login">
+              Log In
+            </b-nav-item>
+            <b-nav-item href="/registere">
+              Registere
+            </b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </div>
+    <b-container>
+      <nuxt />
+    </b-container>
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    LogOut () {
+      this.$auth.logout('local')
+    }
+  }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

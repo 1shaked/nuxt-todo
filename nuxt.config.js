@@ -71,9 +71,6 @@ export default {
     localStorage: true,
     strategies: {
       local: {
-        refreshToken: {
-          property: 'refresh' // change to your refresh token property
-        },
         endpoints: {
           login: { url: 'u/jwt/jwt/create/', method: 'post', propertyName: 'access' },
           logout: { url: 'u/jwt/jwt/refresh/', method: 'post' },
