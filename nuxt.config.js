@@ -52,6 +52,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'http://localhost:8000/'
   },
   /*
   ** Build configuration
@@ -60,7 +61,27 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+   extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+    }
+  },
+  auth: {
+    localStorage: true,
+    strategies: {
+      local: {
+        refreshToken: {
+          property: 'refresh' // change to your refresh token property
+        },
+        endpoints: {
+          login: { url: 'u/jwt/jwt/create/', method: 'post', propertyName: 'access' },
+          logout: { url: 'u/jwt/jwt/refresh/', method: 'post' },
+          user: { url: 'u/jwt/users/me/', method: 'get', propertyName: '' }
+        },
+        tokenRequired: true,
+        tokenType: 'JWT'
+      }
     }
   }
 }
