@@ -68,16 +68,19 @@ export default {
     }
   },
   auth: {
-    localStorage: true,
+    // localStorage: true,
+    redirect: {
+      logout: "/login",            //redirection after user has logged out
+    },
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'u/jwt/jwt/create/', method: 'post', propertyName: 'access' },
-          logout: { url: 'u/jwt/jwt/refresh/', method: 'post' },
-          user: { url: 'u/jwt/users/me/', method: 'get', propertyName: '' }
+          login: { url: 'u/auth/token/login/', method: 'post', propertyName: 'auth_token' },
+          logout: { url: 'u/auth/token/logout/', method: 'post' },
+          user: { url: 'u/auth/users/me/', method: 'get', propertyName: '' }
         },
         tokenRequired: true,
-        tokenType: 'JWT'
+        tokenType: 'Token'
       }
     }
   }

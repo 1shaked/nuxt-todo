@@ -1,16 +1,21 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">
-        Hello {{ $auth.user.id }}
-      </h1>
+      <todos />
     </div>
   </div>
 </template>
 
 <script>
+const Todos = () => import('../../components/Todo/index')
 export default {
-  middleware: 'auth'
+  middleware: 'auth',
+  components: {
+    Todos
+  },
+  async fetch ({ store }) {
+    await store.dispatch('todos/GetTodos')
+  }
 }
 </script>
 

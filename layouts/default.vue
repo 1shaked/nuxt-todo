@@ -14,6 +14,12 @@
           </b-navbar-nav>
           <!-- when the user is logged in -->
           <b-navbar-nav v-if="this.$auth.loggedIn" class="ml-auto">
+            <b-nav-item href="/todos">
+              Todos
+            </b-nav-item>
+            <b-button variant="outline-primary" type="dark">
+              {{ $auth.user.username }}
+            </b-button>
             <b-nav-item @click="$auth.logout('local')">
               Log OUT
             </b-nav-item>
@@ -91,5 +97,17 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.username {
+  background: #fff;
+  color: primary !important;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bold;
+}
+.username:hover {
+  background: #1f8bff;
+  color: rgb(255, 1, 1) !important;
+  font-weight: bolder;
 }
 </style>
