@@ -26,10 +26,6 @@ export const getters = {
 export const mutations = {
   [ADD_TODO] (state, todo) {
     state.todos.push(todo)
-    this.$axios.post('u/todos/', {
-      ...todo,
-      user: this.$auth.user.id
-    })
   },
   [CLEAR_TODOS] (state) {
     Vue.set(state, 'todos', [])
@@ -45,6 +41,18 @@ export const mutations = {
   }
 }
 export const actions = {
+  async AddTodo ({ commit }, todoItem) {
+    await this.$axios.post('u/todos/', {
+      ...todoItem,
+      user: this.$auth.user.id
+    })
+      .then((respond) => {
+        // when created
+        if (respond.status === 201) {
+          commit(ADD_TODO, respond.data)
+        }
+      })
+  },
   async GetTodos ({ commit }) {
     await this.$axios.get('u/todos/', {
       params: {

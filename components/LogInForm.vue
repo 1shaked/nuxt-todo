@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form v-if="show" @submit="onSubmit" @reset="onReset">
+    <b-form @submit="onSubmit" @reset="onReset">
       <b-form-group
         id="input-group-1"
         label="Email address:"
@@ -33,11 +33,6 @@
         Reset
       </b-button>
     </b-form>
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">
-        {{ form }}
-      </pre>
-    </b-card>
   </div>
 </template>
 
@@ -48,10 +43,9 @@ export default {
   data () {
     return {
       form: {
-        email: 'shahar.hen@partner.co.il',
-        password: ''
-      },
-      show: true
+        email: 'test@gmail.com',
+        password: 'rps1+isq=3'
+      }
     }
   },
   methods: {
@@ -78,10 +72,6 @@ export default {
       // Reset our form values
       this.form.email = ''
       this.form.password = ''
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
     }
   }
 }

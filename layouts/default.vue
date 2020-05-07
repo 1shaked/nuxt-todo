@@ -4,7 +4,7 @@
       <b-navbar toggleable="sm" type="light" variant="light">
         <b-navbar-toggle target="nav-text-collapse" />
 
-        <b-navbar-brand>BootstrapVue</b-navbar-brand>
+        <b-navbar-brand>TODO APP</b-navbar-brand>
 
         <b-collapse id="nav-text-collapse" is-nav>
           <b-navbar-nav>

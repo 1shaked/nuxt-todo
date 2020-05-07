@@ -70,7 +70,10 @@ export default {
   auth: {
     // localStorage: true,
     redirect: {
-      logout: "/login",            //redirection after user has logged out
+      login: '/login',
+      logout: '/login',
+      callback: '/login',
+      home: '/'
     },
     strategies: {
       local: {

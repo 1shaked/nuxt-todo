@@ -1,6 +1,8 @@
 <template>
-  <b-card :title="todo.header">
-    <b-card-text>{{ todo.date }}</b-card-text>
+  <b-card :style="TodoStyle" :title="todo.header">
+    <nuxt-link :to="'todos/' + todo.id">
+      <b-card-text>{{ todo.date }}</b-card-text>
+    </nuxt-link>
 
     <b-card-text>
       <slot name="task" />
@@ -23,6 +25,14 @@ export default {
         return {
 
         }
+      }
+    }
+  },
+  computed: {
+    TodoStyle () {
+      return {
+        'background-color': this.todo.background || '#FFFFFF',
+        color: this.todo.color || '#000000'
       }
     }
   },
