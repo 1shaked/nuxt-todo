@@ -68,7 +68,7 @@ export default {
     }
   },
   auth: {
-    // localStorage: true,
+    localStorage: true,
     redirect: {
       login: '/login',
       logout: '/login',
