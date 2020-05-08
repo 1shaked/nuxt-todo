@@ -16,7 +16,7 @@
   </b-card>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 export default {
   props: {
     todo: {
@@ -26,6 +26,10 @@ export default {
 
         }
       }
+    },
+    index: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
@@ -40,6 +44,9 @@ export default {
     ...mapActions('todos', {
       DeleteTodo: 'DeleteTodo'
     }),
+    ...mapMutations('todos', [
+      'SET_CURRENT_TODO'
+    ]),
     DELETE () {
       this.DeleteTodo(this.todo.id)
       if (this.$route.fullPath !== '/todos') {

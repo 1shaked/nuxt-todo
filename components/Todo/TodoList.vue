@@ -1,14 +1,7 @@
 <template>
   <div>
-    <div v-for="todo in todos" :key="todo.id">
-      <todo-card :todo="todo" />
-      <!-- <b-card :title="todo.header">
-        <b-card-text>
-          {{ todo.task }}
-        </b-card-text>
-
-        <b-card-text>{{ todo.date }}</b-card-text>
-      </b-card> -->
+    <div v-for="(todo, index) in todos" :key="todo.id">
+      <todo-card :todo="{ ...todo, index }" />
     </div>
   </div>
 </template>

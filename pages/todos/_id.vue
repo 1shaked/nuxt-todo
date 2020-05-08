@@ -22,8 +22,12 @@ export default {
   },
   async fetch ({ store, params, from }) {
     const isInitPath = !from
+    console.log(isInitPath)
     if (isInitPath) {
       await store.dispatch('todos/GetTodo', params.id)
+    } else {
+      const index = store.state.todos.todos.findIndex(todo => todo.id === parseInt(params.id))
+      await store.commit('todos/SET_CURRENT_TODO', index)
     }
   },
   computed: {

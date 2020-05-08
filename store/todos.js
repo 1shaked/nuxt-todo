@@ -34,6 +34,7 @@ export const mutations = {
     Vue.set(state, 'todos', todos)
   },
   [SET_CURRENT_TODO] (state, index) {
+    console.log(index)
     state.current_todo = index
   },
   [DELETE_TODO] (state, index) {
