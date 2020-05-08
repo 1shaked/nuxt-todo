@@ -22,7 +22,6 @@ export default {
   },
   async fetch ({ store, params, from }) {
     const isInitPath = !from
-    console.log(isInitPath)
     if (isInitPath) {
       await store.dispatch('todos/GetTodo', params.id)
     } else {
