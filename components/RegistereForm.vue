@@ -101,15 +101,15 @@ export default {
           password: this.form.password
         })
         console.log('connected')
-        await this.$auth.loginWith('local', {
+      } catch (error) {
+        console.log(error)
+      }
+      await this.$auth.loginWith('local', {
           data: {
             email: this.form.email,
             password: this.form.password
           }
         })
-      } catch (error) {
-        console.log(error)
-      }
 
     },
     onReset (evt) {
