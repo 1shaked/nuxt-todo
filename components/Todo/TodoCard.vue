@@ -1,8 +1,11 @@
 <template>
   <b-card :style="TodoStyle" :title="todo.header">
-    <nuxt-link :to="'todos/' + todo.id">
+    <nuxt-link v-if="$route.name === 'todos'" :to="'todos/' + todo.id">
       <b-card-text>{{ todo.date }}</b-card-text>
     </nuxt-link>
+    <b-card-text v-else>
+      {{ todo.date }}
+    </b-card-text>
 
     <b-card-text>
       <slot name="task" />
@@ -49,7 +52,7 @@ export default {
     ]),
     DELETE () {
       this.DeleteTodo(this.todo.id)
-      if (this.$route.fullPath !== '/todos') {
+      if (this.$route.name === 'todos-id') {
         // go to the main todo page
         this.$router.push('/todos/')
       }
