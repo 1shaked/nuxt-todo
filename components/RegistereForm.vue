@@ -91,24 +91,22 @@ export default {
     ...mapActions('users', [
       'login'
     ]),
-    onSubmit (evt) {
+    async onSubmit (evt) {
       evt.preventDefault()
       try {
-        this.$axios.post('u/auth/users/', {
+        await this.$axios.post('u/auth/users/', {
           email: this.form.email,
           username: this.form.username,
           phone: this.form.phone,
           password: this.form.password
-        }).then((respond) => {
-          // login after created
-          this.$auth.loginWith('local', {
-            data: {
-              email: this.form.email,
-              password: this.form.password
-            }
-          })
         })
         console.log('connected')
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.form.email,
+            password: this.form.password
+          }
+        })
       } catch (error) {
         console.log(error)
       }
