@@ -1,5 +1,5 @@
 <template>
-  <b-card :style="TodoStyle" :title="todo.header">
+  <b-card class="card" :style="TodoStyle" :title="todo.header">
     <nuxt-link v-if="$route.name === 'todos'" :to="'todos/' + todo.id">
       <b-card-text>{{ todo.date }}</b-card-text>
     </nuxt-link>
@@ -60,3 +60,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.card {
+  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 10px 10px 5px grey;
+  border-radius: 20px;
+  margin: 5px;
+}
+</style>

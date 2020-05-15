@@ -52,7 +52,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'https://shaked.pythonanywhere.com/'
+    baseURL: 'https://hen.pythonanywhere.com/'
   },
   /*
   ** Build configuration
